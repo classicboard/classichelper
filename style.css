@@ -219,7 +219,7 @@ section {
   text-align: left;
   width: 100%;
   opacity: 0;
-  transition: all 0.3s linear;
+  transition: opacity 0.1s linear;
   text-align: center;
   padding-bottom: 0.215rem;
 }

@@ -1,5 +1,11 @@
 'use strict'
 
+// Success-btn
+
+const contactBtn = document.querySelector('.contact-btn');
+const successMsg = document.querySelector('.contact-success-message');
+
+
 // SWIPER
 
 var swiper = new Swiper(".mySwiper", {
@@ -35,37 +41,20 @@ const form = document.forms['contact-me'];
 
 form.addEventListener('submit', e => {
   e.preventDefault()
+  successMsg.classList.add('show')
+
+  function hiddenSuccessMsg(){
+    setTimeout(()=> {
+      successMsg.classList.remove('show')
+    }, 2000)
+  }
   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
     .then(response => {
       form.reset()
       console.log('Success!', response)
+      hiddenSuccessMsg()
     })
     .catch(error => console.error('Error!', error.message))
   })
 
 
-// var swiper = new Swiper(".mySwiper", {
-//   effect: "cube",
-//   grabCursor: true,
-//   speed: 2000,
-//   grabCursor: true,
-
-
-//   cubeEffect: {
-//     shadow: true,
-//     slideShadows: true,
-//     shadowOffset: 20,
-//     shadowScale: 0.94,
-//   },
-
-//   autoplay: {
-//     delay: 3000,
-//     disableOnInteraction: false,
-//     },
-
- 
-
-//   pagination: {
-//     el: ".swiper-pagination",
-//   },
-// });
